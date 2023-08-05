@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
-export const Personajes=() =>{
+export const Planetas=() =>{
     const {store, actions} = useContext(Context)
 
     useEffect(()=>{
-        actions.obtenerPersonajes()
+        actions.obtenerPlanetas()
     },[]) 
 
     return(
         <>
-        <h1>Personajes</h1>
+        <h1>Planetas</h1>
         <div className="card-group">
             <div className="d-flex flex-row overflow-scroll">
-                {store.personajes.map((item, id)=>(
+                {store.planetas.map((item, id)=>(
                     <div key={id} class="card" style={{width: "18rem", flex: "none", margin: "10px"}}>
-                    <img src={"https://starwars-visualguide.com/assets/img/characters/"+(id+1)+".jpg"} class="card-img-top" alt="..."/>
+                    <img src={"https://starwars-visualguide.com/assets/img/planets/"+(id+1)+".jpg"} class="card-img-top" alt="..."/>
                     <div class="card-body">
                         <h5 class="card-title">{item.name}</h5>
                         <p>Gender:</p>

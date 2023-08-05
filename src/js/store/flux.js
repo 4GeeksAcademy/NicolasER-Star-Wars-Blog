@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			personajes: [],
+			personajes: [], 
+			planetas: [],
 		},
 		actions: {
 			obtenerPersonajes: async() => {
@@ -15,6 +16,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}catch(error){
 					console.log(error)
 				}
+			},
+		
+		actions: {
+			obtenerPlanetas: async() => {
+				try{
+					const response = await fetch("https://swapi.tech/api/planets")
+					const data = await response.json()
+					console.log(data)
+					setStore({
+						planetas: data.results
+					})
+				}catch(error){
+					console.log(error)
+				}
+			}
+				
+				
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
