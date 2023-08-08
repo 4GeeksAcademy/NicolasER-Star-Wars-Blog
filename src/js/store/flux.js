@@ -1,8 +1,12 @@
+import { element } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			personajes: [], 
 			planetas: [],
+			personaje: {},
+			favoritos: [],
 		},
 		actions: {
 			obtenerPersonajes: async() => {
@@ -18,7 +22,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 		
-		actions: {
 			obtenerPlanetas: async() => {
 				try{
 					const response = await fetch("https://swapi.tech/api/planets")
@@ -30,9 +33,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}catch(error){
 					console.log(error)
 				}
-			}
+			
 				
 				
+			},
+			obtenerPersonajeIndividual: async(id) => {
+				try {
+					const response = await fetch("https://swapi.dev/api/people/"+id)
+					const data = await response.json()
+					console.log(data)
+					setStore({
+						personaje: data
+					})
+				}catch(error){
+					console.log(error)
+				}
+			},
+			favoritos: (item) => {
+				const store = getStore()
+				if (store.favoritos.includes(item)){
+					let borrar = []
+					borrar = store.favoritos.filter((element)=> element!=item)
+					setStore({
+						favoritos: borrar
+					})
+				}else{
+					setStore ({
+						favoritos: [...store.favoritos, item]
+					})
+				}
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
