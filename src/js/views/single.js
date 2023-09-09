@@ -12,6 +12,7 @@ export const Single = props => {
 	return (
 		<>
 			<h1>{store.personaje.name}</h1>
+			<img>{store.personaje.img}</img>
 		</>
 	);
 };

@@ -20,9 +20,9 @@ export const Personajes=() =>{
                     <img src={"https://starwars-visualguide.com/assets/img/characters/"+(id+1)+".jpg"} class="card-img-top" alt="..."/>
                     <div class="card-body">
                         <h5 class="card-title">{item.name}</h5>
-                        <p>Gender:</p>
-                        <p>Hair Color:</p>
-                        <p>Eye Color:</p>
+                        <p>Gender: {item.gender}</p>
+                        <p>Hair Color: {item.hair_color}</p>
+                        <p>Eye Color: {item.eye_color}</p>
                         <Link to={"/single/"+(id+1)} class="btn btn-primary" style={{marginRight: "100px"}}>Learn More</Link>
                         <button className="btn btn-outline-warning" onClick={()=> actions.favoritos(item.name)}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
